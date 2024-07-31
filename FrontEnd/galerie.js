@@ -3,7 +3,6 @@ async function fetchProjets() {
   const response = await fetch('http://localhost:5678/api/works');
   return await response.json();
 };
-
 // Fonction afficher projets
 function afficherGalerie(projets) {
   const galerie = document.querySelector(".galerie");
@@ -25,24 +24,19 @@ function afficherGalerie(projets) {
     galerie.appendChild(articleElement);
   });
 }
-
-
-  document.addEventListener("DOMContentLoaded", async () => {
-    const btnCategories = document.querySelector(".categorie");
-    const categories = [
-      { id: 0, name: "Tous" },
-      { id: 1, name: "Objets" },
-      { id: 2, name: "Appartements" },
-      { id: 3, name: "Hotels & Restaurants" }
-    ];
-
-    
+document.addEventListener("DOMContentLoaded", async () => {
+  const btnCategories = document.querySelector(".categorie");
+  const categories = [
+    { id: 0, name: "Tous" },
+    { id: 1, name: "Objets" },
+    { id: 2, name: "Appartements" },
+    { id: 3, name: "Hotels & Restaurants" }
+ ];
   // Fonction pour filtrer et afficher les projets
   function filtrerGalerie(projets, categoryId) {
     const projetsFiltrees = categoryId === 0 ? projets : projets.filter(projet => projet.categoryId === categoryId);
     afficherGalerie(projetsFiltrees);
   }
-
   // BOUTONS
   const projets = await fetchProjets();
   categories.forEach(category => {
@@ -55,8 +49,6 @@ function afficherGalerie(projets) {
     });
     btnCategories.appendChild(bouton);
   });
-
-  
   afficherGalerie(projets);
 });
 

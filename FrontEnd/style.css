@@ -30,6 +30,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
+	background-color: rgb(250, 247, 240) ;
 }
 ol, ul {
 	list-style: none;
@@ -61,7 +62,6 @@ header {
 section {
 	margin: 50px 0
 }
-
 h1{
 	display: flex;
 	flex-direction: column;
@@ -70,33 +70,36 @@ h1{
 	font-weight: 800;
 	color: #B1663C
 }
-
 h1 > span {
 	font-family: 'Work Sans';
 	font-size:10px;
 	letter-spacing: 0.1em;
 ;
 }
-
 h2{
 	font-family: 'Syne';
 	font-weight: 700;
 	font-size: 30px;
 	color: #1D6154
 }
-nav ul {
+nav {
 	display: flex;
+	flex-direction: row;
 	align-items: center;
-	list-style-type: none;
-
-}
-nav li {
+	justify-content: space-between;
 	padding: 0 10px;
 	font-size: 1.2em;
 }
-
-li:hover {
+nav a {
+	margin-left: 30px;
+	text-decoration: none;
+	color: black;
+}
+a:hover {
 	color: #B1663C;
+}
+nav img {
+	width: 60%;
 }
 #introduction {
 	display: flex;
@@ -110,14 +113,12 @@ li:hover {
 	margin: auto;
 	width: 80%;
 }
-
 #introduction article {
 	flex: 1
 }
 #introduction h2 {
 	margin-bottom: 1em;
 }
-
 #introduction p {
 	margin-bottom: 0.5em;
 }
@@ -140,7 +141,7 @@ button {
     border-radius: 50px;
     padding: 10px 30px;
     margin: 5px 5px 30px 5px;
-	background-color: white;	
+	background-color: rgb(250, 247, 240);	
 }
 button:hover {
 	background-color: #1D6154;
@@ -174,7 +175,6 @@ button:hover {
 	display: flex;
 	flex-direction: column;
 }
-
 #contact input {
 	height: 50px;
 	font-size: 1.2em;
@@ -188,7 +188,6 @@ button:hover {
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
-
 input[type="submit"]{
 	font-family: 'Syne';
 	font-weight: 700;
@@ -199,8 +198,11 @@ input[type="submit"]{
 	text-align: center;
 	border-radius: 60px ;
 }
-
-footer nav ul {
+footer{
+	background-color: white;
+	padding: 2px;
+}
+footer nav {
 	display: flex;
 	justify-content: flex-end;
 	margin: 2em
