@@ -130,9 +130,6 @@ nav img {
 	display: flex;
 	justify-content:center;
 }
-.galerie p {
-	display: none;
-}
 button {
 	font-weight: bold;
 	color: #1D6154;

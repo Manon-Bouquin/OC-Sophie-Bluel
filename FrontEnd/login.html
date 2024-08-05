@@ -10,6 +10,8 @@
         <meta name="description" content="">
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="login.css">
+        <script type="module" src="login.js"></script>
+        <script type="module" src="authentification.js"></script>
     </head>
     <body>
         <header>
@@ -17,18 +19,20 @@
 		    <nav>
                 <a href="index.html#portfolio">projets</a>
                 <a href="index.html#contact">contact</a>
-                <a class="connecter">login</a>
+                <a class="connecter"></a>
                 <a href="http://instagram.com"><img src="./assets/icons/instagram.png" alt="Instagram"></a>
 		    </nav>
         </header>
         <main>
             <section id="connexion">
                 <h2>Log in</h2>
-                <form method="get" action="">
+                <div class="connexion-erreur">
+                </div>
+                <form method="post" action="" id="form-connexion">
                     <label for="email">Email</label>
                     <input type="email" name="email" id="email">
-                    <label for="mdp">Mot de passe</label>
-                    <input type="password" name="mdp" id="mdp">
+                    <label for="pass">Mot de passe</label>
+                    <input type="password" name="pass" id="pass">
                     <input type="submit" value="Se connecter">
                 </form>
                 <a href="#">Mot de passe oublié</a>
