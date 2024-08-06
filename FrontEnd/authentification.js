@@ -16,8 +16,12 @@ function isLoggedIn() {
 }
 // Vérifie l'état connexion
 document.addEventListener("DOMContentLoaded", function () {
-  isLoggedIn()
-// bouton de connexion/déconnexion
+  if (isLoggedIn()) {
+      afficherEdition();
+  } else {
+      enleverEdition();
+  }
+  // bouton de connexion/déconnexion
   document.querySelector(".connecter").addEventListener("click", function (event) {
       if (isLoggedIn()) {
           window.localStorage.removeItem("token")
@@ -27,3 +31,16 @@ document.addEventListener("DOMContentLoaded", function () {
       }
   })
 })
+function afficherEdition() {
+  let bandeau = document.querySelector(".bandeau");
+  bandeau.style.display = "flex";
+  let edition = document.querySelector(".btnModifier");
+  edition.style.display = "block";
+}
+
+function enleverEdition() {
+  let bandeau = document.querySelector(".bandeau");
+  bandeau.style.display = "none";
+  let edition = document.querySelector(".btnModifier");
+  edition.style.display = "none";
+}

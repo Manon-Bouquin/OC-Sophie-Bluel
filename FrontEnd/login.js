@@ -38,5 +38,3 @@ function afficherErreur (reponse) {
    popupErreur.textContent = errorMessage
    popupErreur.classList.add("active")
 }
-
-

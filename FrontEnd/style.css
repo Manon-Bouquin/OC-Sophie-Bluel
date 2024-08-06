@@ -48,11 +48,28 @@ table {
 	border-spacing: 0;
 }
 /** end reset css**/
+body, html {
+	margin: 0px;
+	padding: 0px;
+}
 body {
 	max-width: 1140px;
 	margin:auto;
 	font-family: 'Work Sans' ;
 	font-size: 14px;
+}
+.bandeau {
+	background-color: black;
+	display: flex;
+	justify-content: center;
+	padding: 5px;
+}
+.bandeau a {
+	color: white;
+	text-decoration: none;
+}
+.bandeau i {
+	margin-right: 10px;;
 }
 header {
 	display: flex;
@@ -125,6 +142,18 @@ nav img {
 #portfolio h2 {
 	text-align: center;
 	margin-bottom: 1em;
+}
+.projets {
+	display: flex;
+	justify-content: center;
+}
+.btnModifier a {
+	color: black;
+	text-decoration: none;
+}
+.btnModifier {
+	margin: 10px;
+	padding-left: 20px;
 }
 .categorie {
 	display: flex;
