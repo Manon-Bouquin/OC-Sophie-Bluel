@@ -60,13 +60,10 @@ body {
 }
 .bandeau {
 	background-color: black;
+	color: white;
 	display: flex;
 	justify-content: center;
 	padding: 5px;
-}
-.bandeau a {
-	color: white;
-	text-decoration: none;
 }
 .bandeau i {
 	margin-right: 10px;;
@@ -159,7 +156,7 @@ nav img {
 	display: flex;
 	justify-content:center;
 }
-button {
+.categorie button {
 	font-weight: bold;
 	color: #1D6154;
 	font-size: 15px;
@@ -168,8 +165,9 @@ button {
     padding: 10px 30px;
     margin: 5px 5px 30px 5px;
 	background-color: rgb(250, 247, 240);	
+	cursor: pointer;
 }
-button:hover {
+.categorie button:hover {
 	background-color: #1D6154;
 	color: white;
 }
@@ -233,4 +231,3 @@ footer nav {
 	justify-content: flex-end;
 	margin: 2em
 }
-
