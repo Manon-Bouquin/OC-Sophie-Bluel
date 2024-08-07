@@ -13,7 +13,7 @@
 }
 .modal-wrapper {
 	width: 40%;
-	height: 800px;
+	height: 900px;
 	padding: 60px;
 	background-color: white;
 	border-radius: 20px;
@@ -49,6 +49,14 @@
 .modal-galerie {
 	padding-bottom: 100px;
 	border-bottom: 1px solid rgba(128, 128, 128, 0.8);
+}
+.projet-supprime {
+	background-color: black;
+	color: white;
+	position: relative;
+	border-radius: 3px;
+	top: 30px;
+	left: 60px;
 }
 .modal-piedDePage{
 	display: flex;
