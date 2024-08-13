@@ -13,7 +13,7 @@ function creationModal () {
     let modalEntete = document.createElement("div")
     modalEntete.classList.add("modal-header")
     modalWrapper.appendChild(modalEntete)
-    let boutonFermer = createButton("btnFermer", "fa-solid fa-xmark")
+    let boutonFermer = creationBouton("btnFermer", "fa-solid fa-xmark")
     modalEntete.appendChild(boutonFermer)
     //Galerie
     let modalGalerie = document.createElement("div")
@@ -30,9 +30,10 @@ function creationModal () {
     let modalPiedDePage = document.createElement("div")
     modalPiedDePage.classList.add("modal-piedDePage")
     modalWrapper.appendChild(modalPiedDePage)
-    let boutonAjout = createButton("btnAjout")
+    let boutonAjout = creationBouton("btnAjout")
     boutonAjout.innerText = "Ajouter une photo"
     modalPiedDePage.appendChild(boutonAjout)
+    //Ajout photo
 }
 //fonction pour appeler les projets
 async function creationModalProjet() {
@@ -41,22 +42,22 @@ async function creationModalProjet() {
     let galerie = document.querySelector(".modal-projet")
     galerie.innerHTML = ""
     for (const projet of projets) {
-        const projetElement = createModalElement(projet)
+        const projetElement = creationModalElement(projet)
         galerie.appendChild(projetElement)
       }
 }
-function createModalElement (projet) {
-    let projetElement = document.createElement("div")
-    projetElement.classList.add("projet", "projet-modal" + projet.id)
+function creationModalElement (projet) {
+    let projetElement = document.createElement("div");
+    projetElement.classList.add("projet");
+    projetElement.setAttribute("id", "projet-modal-" + projet.id);
     let imgElement = document.createElement("img")
     imgElement.classList.add("projet-img")
     let supprimer = document.createElement("button")
     supprimer.classList.add("projet-supprime")
-    supprimer.setAttribute("id", "btn-suppr-" + projet.id )
+    supprimer.setAttribute("id", projet.id )
     supprimer.addEventListener("click", supprimerElement)
     let icone = document.createElement("i")
     icone.classList.add("fa-solid", "fa-trash-can")
-    icone.addEventListener("click", supprimerElement)
     supprimer.appendChild(icone)
     imgElement.src = projet.imageUrl
     imgElement.alt = projet.title 
@@ -64,10 +65,10 @@ function createModalElement (projet) {
     projetElement.appendChild(imgElement)
     return projetElement
 }
-
 async function supprimerElement(e) {
-    const id = e.target.getAttribute("id")
-    if (window.confirm("Souhaitez-vous vraiment supprimer cet élément ?")) {
+  const id = e.currentTarget.getAttribute("id")
+  if (window.confirm("Souhaitez-vous supprimer ce projet ?")) {
+    if (window.confirm("Souhaitez-vous vraiment supprimer ce projet ?")) {
       const token = window.localStorage.getItem("token");
       const response = await fetch("http://localhost:5678/api/works/" + id, {
         headers: {
@@ -76,13 +77,20 @@ async function supprimerElement(e) {
         },
         method: "DELETE",
       });
-      if (response.status === 200 || response.status === 204) {
-        document.getElementById("projet-modal-" + id).remove();
+      if (response.ok) {
+        const projetElement = document.getElementById("projet-modal-" + id)
+        if(projetElement){
+          projetElement.remove()
+        } 
+        //Suppression des éléments du DOM sans recharger la page
+        const projetElementGalerie = document.getElementById("projetGalerie - " + id)
+        if(projetElementGalerie){
+          projetElementGalerie.remove()
+        }
       }
     }
   }
-
-
+}
 function ouvrirModal(e) {
     e.preventDefault()
     const modal = document.getElementById("modal1")
@@ -96,7 +104,10 @@ function ouvrirModal(e) {
 function fermerModal(e){
     e.preventDefault()
     const modal = document.getElementById("modal1")
-    modal.style.display = "none"
+    //1/2s de la fermeture de la modale, pour pouvoir mettre une animation de clôture
+    window.setTimeout(function () {
+      modal.style.display = "none"
+    }, 500)
     modal.setAttribute("aria-hidden", "true")
     modal.removeAttribute("aria-modal")
     modal.removeEventListener("click", fermerModal)
@@ -107,7 +118,7 @@ function fermerModal(e){
 function stopPropagation(e) {
     e.stopPropagation()
 }
-function createButton(className, iconClass) {
+function creationBouton(className, iconClass) {
     let button = document.createElement("button")
     button.classList.add(className)
     let icon = document.createElement("i")

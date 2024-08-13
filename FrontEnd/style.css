@@ -60,10 +60,13 @@ body {
 }
 .bandeau {
 	background-color: black;
-	color: white;
 	display: flex;
 	justify-content: center;
 	padding: 5px;
+}
+.bandeau a {
+	color: white;
+	text-decoration: none;
 }
 .bandeau i {
 	margin-right: 10px;;

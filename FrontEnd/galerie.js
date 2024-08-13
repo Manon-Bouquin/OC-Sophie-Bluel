@@ -9,13 +9,15 @@ function afficherGalerie(projets) {
   galerie.innerHTML = ""
   projets.forEach(projet => {
     const articleElement = document.createElement("article")
+    articleElement.classList.add("projet")
+    articleElement.setAttribute("id", "projetGalerie - " +projet.id)
     const imageElement = document.createElement("img")
     imageElement.src = projet.imageUrl
     imageElement.alt = projet.title
     const nomElement = document.createElement("h3")
     nomElement.innerText = projet.title
     
-    articleElement.classList.add("projet")
+    
     articleElement.appendChild(imageElement)
     articleElement.appendChild(nomElement)
     
