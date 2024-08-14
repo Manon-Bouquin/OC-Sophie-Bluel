@@ -1,5 +1,9 @@
 *{box-sizing: border-box;}
 
+.hidden {
+	display: none;
+}
+
 .elementModal {
 	display: none;
 	position: fixed;
@@ -14,23 +18,32 @@
 }
 .modal-wrapper {
 	width: 40%;
-	height: 900px;
+	height: 850px;
 	padding: 60px;
 	background-color: white;
 	border-radius: 20px;
 	animation: slideFromTop .5s both;
 }
-.modal-header {
+.boutons {
 	display: flex;
-	justify-content: flex-end;
+	justify-content: space-between;
+	align-items: center;
 }
 .btnFermer {
 	background: white;
 	border: none;
-	display: flex;
+	cursor: pointer;
+	margin-left: auto;
+}
+.btnRetour {
+	background: white;
+	border: none;
 	cursor: pointer;
 }
-.modal-galerie h3 {
+.btnFermer, .btnRetour {
+	font-size: 2em;
+}
+.modal-galerie h3, .modal-ajouter h3 {
 	font-size: 2em;
 	display: flex;
 	justify-content: center;
@@ -39,18 +52,15 @@
 .modal-projet {
 	display: flex;
 	flex-wrap: wrap;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+	padding-bottom: 50px;
 	gap: 20px;
 }
 .modal-projet .projet {
 	width: 15%;
 }
-
 .modal-projet .projet-img {
 	width: 100%; 
-}
-.modal-galerie {
-	padding-bottom: 100px;
-	border-bottom: 1px solid rgba(128, 128, 128, 0.8);
 }
 .projet-supprime {
 	background-color: black;
@@ -60,29 +70,77 @@
 	top: 30px;
 	left: 60px;
 }
-.modal-piedDePage{
-	display: flex;
-	justify-content: center;
-	margin: 30px;
-}
-.btnAjout {
+.btnAjout, .btnValider {
 	font-weight: bold;
 	color: white;
 	font-size: 15px;
     border: 2px solid #1D6154;
     border-radius: 50px;
     padding: 10px 30px;
-    margin: 5px 5px 30px 5px;
+	margin: 30px auto;
 	background-color: #1D6154;	
 	cursor: pointer;
+	width: 50%;
+	display: block;
 }
+.zoneValider {
+	padding-bottom: 50px;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+.zoneAjouterPhoto {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: rgba(107, 154, 175, 0.2);
+	border-radius: 5px;
+	padding-top: 30px;
+	padding-bottom: 40px;
+	margin-left: 60px;
+	margin-right: 60px;
+}
+.zoneAjouterPhoto .fa-regular {
+	color: rgba(0, 0, 0, 0.15);
+	font-size: 5em;
+}
+.btnAjouterPhoto {
+	background-color: rgba(0, 0, 0, 0.1);
+	font-size: 1.5em;
+	color: #191970;
+	border-radius: 20px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	border: none;
+	cursor: pointer;
+	width: 45%;
+	height: 50px;
+}
+.formulaireDajout form, p {
+	display: flex;
+	flex-direction: column;
+	margin-top: 30px;
+}
+
+.formulaireDajout label {
+	margin-top: 20px;
+	margin-bottom: 10px;
+}
+.formulaireDajout input {
+	border: none;
+	height: 50px;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+.formulaireDajout select {
+	border: none;
+	height: 50px;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+/**Animation de la modale**/
 .elementModal[aria-hidden="true"] {
 	animation-name : fadeOut;
 }
 .elementModal[aria-hidden="true"] .modal-wrapper {
 	animation-name : slideToBottom;
 }
-/**Animation de la modale**/
 @keyframes fadeIn {
 	from { opacity: 0;}
 	to {opacity: 1;}
