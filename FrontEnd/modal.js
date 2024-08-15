@@ -121,7 +121,7 @@ function creationModal () {
   boutonValider.disabled = true //Désactive par défaut le btn
   boutonValider.addEventListener("click", ajouterPhoto)
   modalAjouter.appendChild(boutonValider)
-  modalAfficher("galerie")
+  modalAfficher()
   formCategorie(formElementCatSelect)
 }
 
@@ -209,10 +209,16 @@ async function ajouterPhoto() {
     body: formData
   })
   if (response.ok) {
+    const nouveauProjet = await response.json()
     document.querySelector(".zoneAjouterPhoto").innerHTML = ""
     document.getElementById("titre").value = ""
     document.getElementById("categorie").value = ""
-    creationModalProjet()
+    const projetElement = creationModalElement(nouveauProjet)
+    const galerie = document.querySelector(".modal-projet")
+    galerie.appendChild(projetElement)
+    const principalGalerie = document.querySelector(".galerie")
+    const projetElement2 = ajoutGalerieElement(nouveauProjet)
+    principalGalerie.appendChild(projetElement2)
     modalAfficher("galerie")
   }
 }
@@ -226,6 +232,22 @@ function verifierChamps() {
   if (titre !== "" && categorie !== "" && fichierInput && fichierInput.files.length > 0) {
     btnValider.disabled = false
   }
+}
+
+////Foncton permettant d'afficher le nouveau projet dans la galerie sans rafraîchissement
+function ajoutGalerieElement(projet) {
+  let projetElement = document.createElement("article")
+  projetElement.classList.add("projet")
+  projetElement.setAttribute("id", "projetGalerie - " + projet.id)
+  let imgElement = document.createElement("img")
+  imgElement.classList.add("projet-img")
+  imgElement.src = projet.imageUrl
+  imgElement.alt = projet.title
+  const nomElement = document.createElement("h3")
+  nomElement.innerText = projet.title
+  projetElement.appendChild(imgElement)
+  projetElement.appendChild(nomElement)
+  return projetElement
 }
 
 ///Fonction suppr/ouvrir/fermer
