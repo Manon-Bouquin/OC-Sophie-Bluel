@@ -5,102 +5,136 @@ document.addEventListener("DOMContentLoaded", () => {
 })
 
 function creationModal () {
-let asideModal = document.getElementById("modal1")
-//modal wrapper
-let modalWrapper = document.createElement("div")
-modalWrapper.classList.add("modal-wrapper", "modalStopPropagation")
-modalWrapper.setAttribute("id", "Galerie-photo")
-asideModal.appendChild(modalWrapper)
-//boutons
-let bouton = document.createElement("div")
-bouton.classList.add("boutons")
-modalWrapper.appendChild(bouton)
-//bouton retour
-let boutonRetour = creationBouton("btnRetour", "fa-solid fa-arrow-left")
-boutonRetour.addEventListener("click", () => modalAfficher('galerie'))
-bouton.appendChild(boutonRetour)
-//Bouton Fermer
-let boutonFermer = creationBouton("btnFermer", "fa-solid fa-xmark")
-bouton.appendChild(boutonFermer)
-//Galerie
-let modalGalerie = document.createElement("div")
-modalGalerie.classList.add("modal-galerie")
-const titreModalGalerie = document.createElement("h3")
-titreModalGalerie.innerText = "Galerie photo"
-modalGalerie.appendChild(titreModalGalerie)
-modalWrapper.appendChild(modalGalerie)
-//Projet
-let modalProjet = document.createElement("div")
-modalProjet.classList.add("modal-projet")
-modalGalerie.appendChild(modalProjet)
-//Bouton ajout photo
-let boutonAjout = creationBouton("btnAjout")
-boutonAjout.innerText = "Ajouter une photo"
-boutonAjout.addEventListener("click", () => modalAfficher ('ajouter'))
-modalGalerie.appendChild(boutonAjout)
-//Ajout photo
-let modalAjouter = document.createElement("div")
-modalAjouter.classList.add("modal-ajouter")
-const titreModalAjout = document.createElement("h3")
-titreModalAjout.innerText = "Ajout photo"
-modalAjouter.appendChild(titreModalAjout)
-modalWrapper.appendChild(modalAjouter)
-//Zone à valider pour l'ajout
-let zoneValider = document.createElement("div")
-zoneValider.classList.add("zoneValider")
-modalAjouter.appendChild(zoneValider)
-//Input ajout photo
-let zoneAjouterPhoto = document.createElement("div")
-zoneAjouterPhoto.classList.add("zoneAjouterPhoto")
-zoneValider.appendChild(zoneAjouterPhoto)
-let iconeImage = document.createElement("i")
-iconeImage.classList.add("fa-regular", "fa-image")
-zoneAjouterPhoto.appendChild(iconeImage)
-let btnAjouterPhoto = document.createElement("button")
-btnAjouterPhoto.classList.add("btnAjouterPhoto")
-btnAjouterPhoto.textContent= "+ Ajouter photo"
-btnAjouterPhoto.addEventListener("click", () => {
-  const inputAjouter = document.createElement("input")
-  inputAjouter.type = "file"
-  inputAjouter.click()
-})
-zoneAjouterPhoto.appendChild(btnAjouterPhoto)
-let tailleImg = document.createElement("p")
-tailleImg.innerText = "jpg, png : 4mo max"
-zoneAjouterPhoto.appendChild(tailleImg)
-//Formulaire
-let formulaireDajout = document.createElement("div")
-formulaireDajout.classList.add("formulaireDajout")
-zoneValider.appendChild(formulaireDajout)
-let formAjout = document.createElement("form")
-formAjout.method = "get"
-formAjout.action = " "
-formulaireDajout.appendChild(formAjout)
-let formElement = document.createElement("p")
-formAjout.appendChild(formElement)
-let formElementTitreLabel = document.createElement("label")
-formElementTitreLabel.for = "titre"
-formElementTitreLabel.innerText = "Titre"
-formElement.appendChild(formElementTitreLabel)
-let formElementTitreInput = document.createElement("input")
-formElementTitreInput.type = "text"
-formElementTitreInput.title = "titre"
-formElementTitreInput.id = "titre"
-formElement.appendChild(formElementTitreInput)
-let formElementCategorie = document.createElement ("label")
-formElementCategorie.for = "categorie"
-formElementCategorie.innerText = "Catégorie"
-formAjout.appendChild(formElementCategorie)
-let formElementCatSelect = document.createElement ("select")
-formElementCatSelect.name = "categorie"
-formElementCatSelect.id = "categorie"
-formAjout.appendChild(formElementCatSelect)
-//Bouton Valider
-let boutonValider = creationBouton("btnValider")
-boutonValider.innerText = "Valider"
-modalAjouter.appendChild(boutonValider)
-modalAfficher("galerie")
-formCategorie(formElementCatSelect)
+  let asideModal = document.getElementById("modal1")
+  //modal wrapper
+  let modalWrapper = document.createElement("div")
+  modalWrapper.classList.add("modal-wrapper", "modalStopPropagation")
+  modalWrapper.setAttribute("id", "Galerie-photo")
+  asideModal.appendChild(modalWrapper)
+  //boutons
+  let bouton = document.createElement("div")
+  bouton.classList.add("boutons")
+  modalWrapper.appendChild(bouton)
+  //bouton retour
+  let boutonRetour = creationBouton("btnRetour", "fa-solid fa-arrow-left")
+  boutonRetour.addEventListener("click", () => modalAfficher('galerie'))
+  bouton.appendChild(boutonRetour)
+  //Bouton Fermer
+  let boutonFermer = creationBouton("btnFermer", "fa-solid fa-xmark")
+  bouton.appendChild(boutonFermer)
+  //Galerie
+  let modalGalerie = document.createElement("div")
+  modalGalerie.classList.add("modal-galerie")
+  const titreModalGalerie = document.createElement("h3")
+  titreModalGalerie.innerText = "Galerie photo"
+  modalGalerie.appendChild(titreModalGalerie)
+  modalWrapper.appendChild(modalGalerie)
+  //Projet
+  let modalProjet = document.createElement("div")
+  modalProjet.classList.add("modal-projet")
+  modalGalerie.appendChild(modalProjet)
+  //Bouton ajouter photo
+  let boutonAjout = creationBouton("btnAjout")
+  boutonAjout.innerText = "Ajouter une photo"
+  boutonAjout.addEventListener("click", () => modalAfficher ('ajouter'))
+  modalGalerie.appendChild(boutonAjout)
+  //Ajout photo
+  let modalAjouter = document.createElement("div")
+  modalAjouter.classList.add("modal-ajouter")
+  const titreModalAjout = document.createElement("h3")
+  titreModalAjout.innerText = "Ajout photo"
+  modalAjouter.appendChild(titreModalAjout)
+  modalWrapper.appendChild(modalAjouter)
+  //Zone à valider pour l'ajout
+  let zoneValider = document.createElement("div")
+  zoneValider.classList.add("zoneValider")
+  modalAjouter.appendChild(zoneValider)
+  //Input ajout photo
+  let zoneAjouterPhoto = document.createElement("div")
+  zoneAjouterPhoto.classList.add("zoneAjouterPhoto")
+  zoneValider.appendChild(zoneAjouterPhoto)
+  //icone
+  let iconeImage = document.createElement("i")
+  iconeImage.classList.add("fa-regular", "fa-image")
+  zoneAjouterPhoto.appendChild(iconeImage)
+  //Bouton +ajout photo
+  let btnAjouterPhoto = document.createElement("button")
+  btnAjouterPhoto.classList.add("btnAjouterPhoto")
+  btnAjouterPhoto.textContent = "+ Ajouter photo"
+  btnAjouterPhoto.addEventListener("click", () => {
+    const inputAjouter = document.createElement("input")
+    inputAjouter.type = "file"
+    inputAjouter.accept = "image/*"
+    inputAjouter.style.display = "none"
+    inputAjouter.addEventListener("change", (e) => {
+      const file = e.target.files[0]
+      if (file) {
+        const image = document.createElement("img")
+        image.src = URL.createObjectURL(file)
+        image.classList.add("visible")
+        zoneAjouterPhoto.querySelectorAll(".fa-regular, p, .btnAjouterPhoto").forEach(element => element.classList.add("cacher"))
+        zoneAjouterPhoto.appendChild(image)
+        verifierChamps()
+      }
+    })
+    zoneAjouterPhoto.appendChild(inputAjouter)
+    inputAjouter.click()
+  })
+  zoneAjouterPhoto.appendChild(btnAjouterPhoto)
+  let tailleImg = document.createElement("p")
+  tailleImg.innerText = "jpg, png : 4mo max"
+  zoneAjouterPhoto.appendChild(tailleImg)
+  //Formulaire
+  let formulaireDajout = document.createElement("div")
+  formulaireDajout.classList.add("formulaireDajout")
+  zoneValider.appendChild(formulaireDajout)
+  let formAjout = document.createElement("form")
+  formAjout.method = "get"
+  formulaireDajout.appendChild(formAjout)
+  let formElement = document.createElement("p")
+  formAjout.appendChild(formElement)
+  //Champ titre
+  let formElementTitreLabel = document.createElement("label")
+  formElementTitreLabel.for = "titre"
+  formElementTitreLabel.innerText = "Titre"
+  formElement.appendChild(formElementTitreLabel)
+  let formElementTitreInput = document.createElement("input")
+  formElementTitreInput.type = "text"
+  formElementTitreInput.title = "titre"
+  formElementTitreInput.id = "titre"
+  formElement.appendChild(formElementTitreInput)
+  //champ catégorie
+  let formElementCategorie = document.createElement ("label")
+  formElementCategorie.for = "categorie"
+  formElementCategorie.innerText = "Catégorie"
+  formAjout.appendChild(formElementCategorie)
+  let formElementCatSelect = document.createElement ("select")
+  formElementCatSelect.name = "categorie"
+  formElementCatSelect.id = "categorie"
+  formAjout.appendChild(formElementCatSelect)
+  //Ecouteurs d'evenements pour les champs
+  formElementTitreInput.addEventListener("input", verifierChamps)
+  formElementCatSelect.addEventListener("change", verifierChamps)
+  //Bouton Valider
+  let boutonValider = creationBouton("btnValider")
+  boutonValider.innerText = "Valider"
+  boutonValider.disabled = true //Désactive par défaut le btn
+  boutonValider.addEventListener("click", ajouterPhoto)
+  modalAjouter.appendChild(boutonValider)
+  modalAfficher("galerie")
+  formCategorie(formElementCatSelect)
+}
+
+//////fonction pour appeler les projets
+async function creationModalProjet() {
+  const response = await fetch("http://localhost:5678/api/works")
+  let projets = await response.json()
+  let galerie = document.querySelector(".modal-projet")
+  galerie.innerHTML = ""
+  for (const projet of projets) {
+      const projetElement = creationModalElement(projet)
+      galerie.appendChild(projetElement)
+    }
 }
 
 //////fonction pour récupérer les catégories
@@ -118,6 +152,7 @@ async function formCategorie(formElementCatSelect) {
     })
 }
 
+/////Fonction pour afficher soit galerie soit ajout
 function modalAfficher (afficher) {
   const galerie = document.querySelector(".modal-galerie")
   const ajouter = document.querySelector(".modal-ajouter")
@@ -125,32 +160,22 @@ function modalAfficher (afficher) {
   if (afficher === "galerie") {
     galerie.style.display = "block"
     ajouter.style.display = "none"
-    boutonRetour.classList.add("hidden")
+    boutonRetour.classList.add("cacher")
   } else if (afficher === "ajouter") {
     galerie.style.display = "none"
     ajouter.style.display = "block"
-    boutonRetour.classList.remove("hidden")
+    boutonRetour.classList.remove("cacher")
   }
 }
 
-//////fonction pour appeler les projets
-async function creationModalProjet() {
-  const response = await fetch("http://localhost:5678/api/works")
-  let projets = await response.json()
-  let galerie = document.querySelector(".modal-projet")
-  galerie.innerHTML = ""
-  for (const projet of projets) {
-      const projetElement = creationModalElement(projet)
-      galerie.appendChild(projetElement)
-    }
-}
-
+//////Fonction pour afficher les projets de galerie
 function creationModalElement (projet) {
   let projetElement = document.createElement("div");
   projetElement.classList.add("projet");
   projetElement.setAttribute("id", "projet-modal-" + projet.id);
   let imgElement = document.createElement("img")
   imgElement.classList.add("projet-img")
+  //Ajout de l'icone/bouton supprimer
   let supprimer = document.createElement("button")
   supprimer.classList.add("projet-supprime")
   supprimer.setAttribute("id", projet.id )
@@ -165,6 +190,45 @@ function creationModalElement (projet) {
   return projetElement
 }
 
+////Fonction ajouter un projet/photo
+async function ajouterPhoto() {
+  const titre = document.getElementById("titre").value.trim()
+  const categorieId = document.getElementById("categorie").value
+  const fichierInput = document.querySelector("input[type='file']")
+  const fichier = fichierInput.files[0]
+  const formData = new FormData()
+  formData.append("title", titre)
+  formData.append("category", categorieId)
+  formData.append("image", fichier)
+  const token = window.localStorage.getItem("token")
+  const response = await fetch("http://localhost:5678/api/works", {
+    method: "POST",
+    headers: {
+      "Authorization": "Bearer " + token
+    },
+    body: formData
+  })
+  if (response.ok) {
+    document.querySelector(".zoneAjouterPhoto").innerHTML = ""
+    document.getElementById("titre").value = ""
+    document.getElementById("categorie").value = ""
+    creationModalProjet()
+    modalAfficher("galerie")
+  }
+}
+
+////fonction de vérification des champs du formulaire
+function verifierChamps() {
+  const titre = document.getElementById("titre").value.trim()
+  const categorie = document.getElementById("categorie").value
+  const fichierInput = document.querySelector("input[type='file']")
+  const btnValider = document.querySelector(".btnValider")
+  if (titre !== "" && categorie !== "" && fichierInput && fichierInput.files.length > 0) {
+    btnValider.disabled = false
+  }
+}
+
+///Fonction suppr/ouvrir/fermer
 async function supprimerElement(e) {
   const id = e.currentTarget.getAttribute("id")
   if (window.confirm("Souhaitez-vous supprimer ce projet ?")) {
@@ -234,5 +298,5 @@ function creationBouton(className, iconClass) {
 function initializeModalEventListeners() {
   document.querySelectorAll(".modifier").forEach(a => {
       a.addEventListener("click", ouvrirModal)
-  });
+  })
 }
