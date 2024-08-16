@@ -14,6 +14,7 @@ function isLoggedIn() {
   document.querySelector(".connecter").innerText = loggedIn ? "logout" : "login"
   return loggedIn
 }
+
 // Vérifie l'état connexion
 document.addEventListener("DOMContentLoaded", function () {
   if (isLoggedIn()) {
@@ -31,6 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
   })
 })
+
 function afficherEdition() {
   let bandeau = document.querySelector(".bandeau");
   bandeau.style.display = "flex";

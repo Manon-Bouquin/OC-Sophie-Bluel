@@ -213,6 +213,7 @@ async function ajouterPhoto() {
     document.querySelector(".zoneAjouterPhoto").innerHTML = ""
     document.getElementById("titre").value = ""
     document.getElementById("categorie").value = ""
+    //Ajouter le projet ds la galerie
     const projetElement = creationModalElement(nouveauProjet)
     const galerie = document.querySelector(".modal-projet")
     galerie.appendChild(projetElement)

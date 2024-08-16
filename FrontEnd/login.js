@@ -9,6 +9,7 @@ logInForm.addEventListener ("submit", (event) => {
     }
     logIn(logInElement)
 })
+
 async function logIn(logInElement) {
 
         const chargeUtile = JSON.stringify(logInElement)
@@ -26,6 +27,7 @@ async function logIn(logInElement) {
             afficherErreur(reponse)
         }
 }
+
 function afficherErreur (reponse) {
     let errorMessage
    switch (reponse.status) {

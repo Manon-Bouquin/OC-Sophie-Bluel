@@ -4,6 +4,11 @@ async function fetchProjets() {
   return await response.json()
 }
 
+async function fetchCategories() {
+  const response = await fetch('http://localhost:5678/api/categories')
+  return await response.json()
+}
+
 // Fonction afficher projets
 function afficherGalerie(projets) {
   const galerie = document.querySelector(".galerie")
@@ -19,28 +24,20 @@ function afficherGalerie(projets) {
     nomElement.innerText = projet.title
     articleElement.appendChild(imageElement)
     articleElement.appendChild(nomElement)
-    
     galerie.appendChild(articleElement)
   })
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
   const btnCategories = document.querySelector(".categorie")
-  const categories = [
-    { id: 0, name: "Tous" },
-    { id: 1, name: "Objets" },
-    { id: 2, name: "Appartements" },
-    { id: 3, name: "Hotels & Restaurants" }
- ]
- 
+  const [projets, categories] = await Promise.all([fetchProjets(), fetchCategories()]) //Exécute les 2 requêtes en // et att que les 2 soient terminés
+  categories.unshift({id:0, name: "Tous"})
   // Fonction pour filtrer et afficher les projets
   function filtrerGalerie(projets, categoryId) {
     const projetsFiltrees = categoryId === 0 ? projets : projets.filter(projet => projet.categoryId === categoryId)
     afficherGalerie(projetsFiltrees)
   }
-
   // BOUTONS
-  const projets = await fetchProjets()
   categories.forEach(category => {
     const bouton = document.createElement("button")
     bouton.type = "button"
@@ -52,5 +49,3 @@ document.addEventListener("DOMContentLoaded", async () => {
   })
   afficherGalerie(projets)
 })
-
-
