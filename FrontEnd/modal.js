@@ -90,6 +90,7 @@ function creationModal () {
   zoneValider.appendChild(formulaireDajout)
   let formAjout = document.createElement("form")
   formAjout.method = "get"
+  formAjout.setAttribute("id", "formAjouterPhoto")
   formulaireDajout.appendChild(formAjout)
   let formElement = document.createElement("p")
   formAjout.appendChild(formElement)
@@ -210,7 +211,16 @@ async function ajouterPhoto() {
   })
   if (response.ok) {
     const nouveauProjet = await response.json()
-    document.querySelector(".zoneAjouterPhoto").innerHTML = ""
+    const zoneAjouterPhoto = document.querySelector(".zoneAjouterPhoto")
+    const image = zoneAjouterPhoto.querySelector("img")
+    const input = zoneAjouterPhoto.querySelector("input")
+    if (image) {
+      image.remove()
+      input.remove()
+    }
+    document.querySelectorAll(".fa-regular, p, .btnAjouterPhoto").forEach(element => element.classList.remove("cacher"))
+    const boutonValider = document.querySelector(".btnValider")
+    boutonValider.disabled = true
     document.getElementById("titre").value = ""
     document.getElementById("categorie").value = ""
     //Ajouter le projet ds la galerie
@@ -274,7 +284,6 @@ async function supprimerElement(e) {
         projetElementGalerie.remove()
       }
     }
-    
   }
 }
 
@@ -287,7 +296,6 @@ function ouvrirModal() {
   modal.querySelector(".btnFermer").addEventListener("click", fermerModal)
   modal.querySelector(".modalStopPropagation").addEventListener("click", stopPropagation)
   modalAfficher('galerie')
-  
 }
 
 function fermerModal(e){
@@ -302,7 +310,6 @@ function fermerModal(e){
   modal.removeEventListener("click", fermerModal)
   modal.querySelector(".btnFermer").removeEventListener("click", fermerModal)
   modal.querySelector(".modalStopPropagation").removeEventListener("click", stopPropagation)
-
 }
 
 function stopPropagation(e) {
