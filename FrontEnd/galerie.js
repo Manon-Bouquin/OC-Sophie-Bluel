@@ -44,8 +44,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     const bouton = document.createElement("button")
     bouton.type = "button"
     bouton.textContent = category.name
-    bouton.addEventListener("click", () => {
-      filtrerGalerie(projets, category.id)
+    bouton.addEventListener("click", async () => {
+      var projet = await fetchProjets()
+      filtrerGalerie(projet, category.id)
     })
     btnCategories.appendChild(bouton)
   })
