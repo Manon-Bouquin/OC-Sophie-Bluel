@@ -15,10 +15,10 @@ function isLoggedIn() {
   return loggedIn
 }
 
-// Vérifie l'état connexion
+//////Vérifie l'état connexion
 document.addEventListener("DOMContentLoaded", function () {
   if (isLoggedIn()) {
-      afficherEdition();
+      afficherEdition()
   }
   // bouton de connexion/déconnexion
   document.querySelector(".connecter").addEventListener("click", function (event) {
@@ -32,8 +32,8 @@ document.addEventListener("DOMContentLoaded", function () {
 })
 
 function afficherEdition() {
-  let bandeau = document.querySelector(".bandeau");
-  bandeau.style.display = "flex";
-  let edition = document.querySelector(".btnModifier");
-  edition.style.display = "block";
+  let bandeau = document.querySelector(".bandeau")
+  bandeau.style.display = "flex"
+  let edition = document.querySelector(".btnModifier")
+  edition.style.display = "block"
 }

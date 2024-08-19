@@ -32,7 +32,7 @@ footer, header, hgroup, menu, nav, section {
 
 body {
 	line-height: 1;
-	background-color: rgb(250, 247, 240) ;
+	background-color: rgb(250, 247, 240);
 }
 
 ol, ul {
@@ -63,13 +63,13 @@ body, html {
 body {
 	max-width: 1140px;
 	margin:auto;
-	font-family: 'Work Sans' ;
+	font-family: 'Work Sans';
 	font-size: 14px;
 }
 
 .bandeau {
 	background-color: black;
-	display: flex;
+	display: none;
 	justify-content: center;
 	padding: 5px;
 }
@@ -79,7 +79,7 @@ body {
 	text-decoration: none;
 }
 .bandeau i {
-	margin-right: 10px;;
+	margin-right: 10px;
 }
 
 header {
@@ -89,7 +89,7 @@ header {
 }
 
 section {
-	margin: 50px 0
+	margin: 50px 0;
 }
 
 h1{
@@ -98,7 +98,7 @@ h1{
 	font-family: 'Syne';
 	font-size: 22px;
 	font-weight: 800;
-	color: #B1663C
+	color: #B1663C;
 }
 
 h1 > span {
@@ -112,7 +112,7 @@ h2{
 	font-family: 'Syne';
 	font-weight: 700;
 	font-size: 30px;
-	color: #1D6154
+	color: #1D6154;
 }
 
 nav {
@@ -144,7 +144,7 @@ nav img {
 }
 
 #introduction figure {
-	flex: 1
+	flex: 1;
 }
 
 #introduction img {
@@ -154,7 +154,7 @@ nav img {
 }
 
 #introduction article {
-	flex: 1
+	flex: 1;
 }
 
 #introduction h2 {
@@ -181,6 +181,7 @@ nav img {
 }
 
 .btnModifier {
+	display: none;
 	margin: 10px;
 	padding-left: 20px;
 }
@@ -274,5 +275,5 @@ footer{
 footer nav {
 	display: flex;
 	justify-content: flex-end;
-	margin: 2em
+	margin: 2em;
 }

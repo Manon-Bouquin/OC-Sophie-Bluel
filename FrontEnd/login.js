@@ -11,21 +11,20 @@ logInForm.addEventListener ("submit", (event) => {
 })
 
 async function logIn(logInElement) {
+    const chargeUtile = JSON.stringify(logInElement)
+    const reponse = await fetch("http://localhost:5678/api/users/login", {
+        method: "POST",
+        headers: {"Content-Type":"application/json"},
+        body: chargeUtile
+    })
 
-        const chargeUtile = JSON.stringify(logInElement)
-        const reponse = await fetch("http://localhost:5678/api/users/login", {
-            method: "POST",
-            headers: {"Content-Type":"application/json"},
-            body: chargeUtile
-        })
-
-        if (reponse.ok) {
-            const data = await reponse.json();
-            window.localStorage.setItem("token", data.token);
-            window.location.replace("index.html");
-        }else {
-            afficherErreur(reponse)
-        }
+    if (reponse.ok) {
+        const data = await reponse.json();
+        window.localStorage.setItem("token", data.token);
+        window.location.replace("index.html");
+    }else {
+        afficherErreur(reponse)
+    }
 }
 
 function afficherErreur (reponse) {
