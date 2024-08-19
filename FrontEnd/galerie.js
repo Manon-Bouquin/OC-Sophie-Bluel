@@ -30,7 +30,9 @@ function afficherGalerie(projets) {
 
 document.addEventListener("DOMContentLoaded", async () => {
   const btnCategories = document.querySelector(".categorie")
-  const [projets, categories] = await Promise.all([fetchProjets(), fetchCategories()]) //Exécute les 2 requêtes en // et att que les 2 soient terminés
+  // récupération des projets via fetch
+  const projets = await fetchProjets()
+  const categories = await fetchCategories()
   categories.unshift({id:0, name: "Tous"})
   // Fonction pour filtrer et afficher les projets
   function filtrerGalerie(projets, categoryId) {

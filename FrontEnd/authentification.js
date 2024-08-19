@@ -19,8 +19,6 @@ function isLoggedIn() {
 document.addEventListener("DOMContentLoaded", function () {
   if (isLoggedIn()) {
       afficherEdition();
-  } else {
-      enleverEdition();
   }
   // bouton de connexion/déconnexion
   document.querySelector(".connecter").addEventListener("click", function (event) {
@@ -38,11 +36,4 @@ function afficherEdition() {
   bandeau.style.display = "flex";
   let edition = document.querySelector(".btnModifier");
   edition.style.display = "block";
-}
-
-function enleverEdition() {
-  let bandeau = document.querySelector(".bandeau");
-  bandeau.style.display = "none";
-  let edition = document.querySelector(".btnModifier");
-  edition.style.display = "none";
 }
