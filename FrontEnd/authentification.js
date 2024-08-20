@@ -1,5 +1,5 @@
 function isLoggedIn() {
-  let loggedIn;
+  let loggedIn
   const token = window.localStorage.getItem("token")
   if (token != null) {
       const arrayToken = token.split(".")

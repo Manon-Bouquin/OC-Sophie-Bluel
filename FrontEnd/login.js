@@ -20,8 +20,8 @@ async function logIn(logInElement) {
 
     if (reponse.ok) {
         const data = await reponse.json();
-        window.localStorage.setItem("token", data.token);
-        window.location.replace("index.html");
+        window.localStorage.setItem("token", data.token)
+        window.location.replace("index.html")
     }else {
         afficherErreur(reponse)
     }

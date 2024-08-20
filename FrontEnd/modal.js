@@ -171,8 +171,8 @@ function modalAfficher (afficher) {
 
 //////Fonction pour afficher les projets de galerie
 function creationModalElement (projet) {
-  let projetElement = document.createElement("div");
-  projetElement.classList.add("projet");
+  let projetElement = document.createElement("div")
+  projetElement.classList.add("projet")
   projetElement.setAttribute("id", "projet-modal-" + projet.id);
   let imgElement = document.createElement("img")
   imgElement.classList.add("projet-img")
