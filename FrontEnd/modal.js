@@ -173,7 +173,7 @@ function modalAfficher (afficher) {
 function creationModalElement (projet) {
   let projetElement = document.createElement("div")
   projetElement.classList.add("projet")
-  projetElement.setAttribute("id", "projet-modal-" + projet.id);
+  projetElement.setAttribute("id", "projet-modal-" + projet.id)
   let imgElement = document.createElement("img")
   imgElement.classList.add("projet-img")
   //Ajout de l'icone/bouton supprimer
