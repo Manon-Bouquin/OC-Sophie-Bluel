@@ -36,4 +36,6 @@ function afficherEdition() {
   bandeau.style.display = "flex"
   let edition = document.querySelector(".btnModifier")
   edition.style.display = "block"
+  let categorie = document.querySelector(".categorie")
+  categorie.style.display = "none"
 }
