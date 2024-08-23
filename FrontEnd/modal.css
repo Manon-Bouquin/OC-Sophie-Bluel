@@ -67,6 +67,7 @@
 
 .modal-projet .projet {
 	width: 15%;
+	position: relative;
 }
 
 .modal-projet .projet-img {
@@ -76,10 +77,12 @@
 .projet-supprime {
 	background-color: black;
 	color: white;
-	position: relative;
+	position: absolute;
 	border-radius: 3px;
-	top: 30px;
-	left: 60px;
+	top: 0px;
+	right: 0px;
+	margin: 5px;
+	padding: 5px;
 }
 
 .btnAjout, .btnValider {

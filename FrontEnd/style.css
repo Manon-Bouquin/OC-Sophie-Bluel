@@ -72,6 +72,11 @@ body {
 	display: none;
 	justify-content: center;
 	padding: 5px;
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	margin: 0;
 }
 
 .bandeau a {

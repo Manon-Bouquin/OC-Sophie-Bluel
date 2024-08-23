@@ -242,6 +242,8 @@ function verifierChamps() {
   const btnValider = document.querySelector(".btnValider")
   if (titre !== "" && categorie !== "" && fichierInput && fichierInput.files.length > 0) {
     btnValider.disabled = false
+  }else {
+    btnValider.disabled = true
   }
 }
 
